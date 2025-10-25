@@ -1,10 +1,34 @@
 import ResturantCard from "./ResturantCard";
-import resList from "../utils/mockData";
-import { useState } from "react";
+import Shimmer from "./Shimmer";
+import { useEffect, useState } from "react";
 
 const Body = () => {
   // Local State Variable
-  const [listOfResturants, setListOfResturant] = useState(resList);
+  const [listOfResturants, setListOfResturant] = useState([]);
+
+  useEffect(() => {
+    //console.log("Hello It Loads immediately after the body componenet loads");
+    fetchResturantList();
+  }, []);
+
+  const fetchResturantList = async () => {
+    const resData = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9257514&lng=77.6704236&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    const response = await resData.json();
+    //console.log("response=", response);
+    //optional chaining
+    setListOfResturant(
+      response?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+  };
+
+  // console.log("Body componenet called First");
+  // Conditional Rendering
+  if (listOfResturants.length === 0) {
+    return <Shimmer></Shimmer>;
+  }
 
   return (
     <div className="body">
