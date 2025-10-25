@@ -25,12 +25,16 @@ const Body = () => {
   };
 
   // console.log("Body componenet called First");
-  // Conditional Rendering
-  if (listOfResturants.length === 0) {
-    return <Shimmer></Shimmer>;
-  }
 
-  return (
+  // if (listOfResturants.length === 0) {
+  //   return <Shimmer></Shimmer>;
+  // }
+
+  // Conditional Rendering
+
+  return listOfResturants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
         <button
