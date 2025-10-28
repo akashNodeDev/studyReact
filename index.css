@@ -69,3 +69,7 @@
 .login {
   padding: 20px;
 }
+
+.filter {
+  display: flex;
+}

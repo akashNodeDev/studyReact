@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 const Body = () => {
   // Local State Variable
   const [listOfResturants, setListOfResturant] = useState([]);
+  const [filteredResturant, setFilteredResturant] = useState([]); // Added copy so that in the search it will not effect the original list
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     //console.log("Hello It Loads immediately after the body componenet loads");
@@ -22,9 +24,13 @@ const Body = () => {
       response?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
+    setFilteredResturant(
+      response?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
   };
 
-  // console.log("Body componenet called First");
+  console.log("Body componenet called First");
 
   // if (listOfResturants.length === 0) {
   //   return <Shimmer></Shimmer>;
@@ -37,6 +43,27 @@ const Body = () => {
   ) : (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="search-box"
+            value={searchText}
+            onChange={(e) => {
+              //console.log("event=", e);
+              setSearchText(e.target.value);
+            }}
+          />
+          <button
+            onClick={() => {
+              console.log("searchText==", searchText);
+              const filteredResturant = listOfResturants.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setFilteredResturant(filteredResturant);
+            }}>
+            Search
+          </button>
+        </div>
         <button
           className="filter-btn"
           onClick={() => {
@@ -44,14 +71,14 @@ const Body = () => {
             const filteredList = listOfResturants.filter(
               (res) => res.info.avgRating > 4.2
             );
-            setListOfResturant(filteredList);
+            setFilteredResturant(filteredList);
             console.log("Res List filtered", filteredList);
           }}>
           Top Rated Resturants
         </button>
       </div>
       <div className="res-container">
-        {listOfResturants.map((resturant) => (
+        {filteredResturant.map((resturant) => (
           <ResturantCard key={resturant.info.id} resData={resturant} />
         ))}
       </div>
