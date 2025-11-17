@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./src/components/Header";
 import Body from "./src/components/Body";
 import About from "./src/components/About";
 import Contact from "./src/components/Contact";
 import Error from "./src/components/Error";
+import ResturantMenu from "./src/components/ResturantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 
 /**
  * Swiggy Like Website Structure
- /**
-  * Header
+ /** 
+  * Headers
   *   - Logo
   *   - Nav Items
   *   - Cart
@@ -54,6 +55,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/restaurants/:resId",
+        element: <ResturantMenu />,
       },
     ],
     errorElement: <Error />,

@@ -1,6 +1,7 @@
 import ResturantCard from "./ResturantCard";
 import Shimmer from "./Shimmer";
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const Body = () => {
   // Local State Variable
@@ -30,7 +31,7 @@ const Body = () => {
     );
   };
 
-  console.log("Body componenet called First");
+  // console.log("Body componenet called First");
 
   // if (listOfResturants.length === 0) {
   //   return <Shimmer></Shimmer>;
@@ -79,7 +80,11 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredResturant.map((resturant) => (
-          <ResturantCard key={resturant.info.id} resData={resturant} />
+          <Link
+            key={resturant.info.id}
+            to={"/restaurants/" + resturant.info.id}>
+            <ResturantCard resData={resturant} />
+          </Link>
         ))}
       </div>
     </div>
