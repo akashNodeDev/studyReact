@@ -2,6 +2,7 @@ import ResturantCard from "./ResturantCard";
 import Shimmer from "./Shimmer";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import useCheckOnline from "../utils/useCheckOnline";
 
 const Body = () => {
   // Local State Variable
@@ -33,9 +34,13 @@ const Body = () => {
 
   // console.log("Body componenet called First");
 
-  // if (listOfResturants.length === 0) {
-  //   return <Shimmer></Shimmer>;
-  // }
+  const checkOnlineStatus = useCheckOnline();
+  console.log("checkOnlineStatus===", checkOnlineStatus);
+
+  if (checkOnlineStatus === false)
+    return (
+      <h1>Oops:You are offline. Please check your internet connection once!</h1>
+    );
 
   // Conditional Rendering
 
