@@ -1,31 +1,15 @@
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import resMenuMockData from "../utils/resMenuMockData";
-//import { useParams } from "react-router";
-import { MENU_API } from "../utils/constant";
+import { useParams } from "react-router";
+import useResturantMenu from "../utils/useResturantMenu";
+//import { MENU_API } from "../utils/constant";
 
 const ResturantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
-
-  //const { resId } = useParams(); // This is the params that we are using in the route
-
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    /*
-    * commenting this code because the resturant menu api is not working due to the cors issue 
-    so using the mockdata on behalf of it 
-    // const data = await fetch(
-    //   MENU_API+resId
-    // );
-    //const json = await data.json();
-    //console.log(data);
-    */
-    setResInfo(resMenuMockData);
-    //console.log("resinfo=", resInfo);
-  };
+  const { resId } = useParams(); // This is the params that we are using in the route
+  //console.log("resid============", resId);
+  /** Here useResturantMenu is a custom hook */
+  const resInfo = useResturantMenu(resId);
 
   if (resInfo === null) return <Shimmer />;
 
