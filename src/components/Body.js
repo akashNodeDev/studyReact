@@ -1,4 +1,4 @@
-import ResturantCard from "./ResturantCard";
+import ResturantCard, { cardWithPromoted } from "./ResturantCard";
 import Shimmer from "./Shimmer";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
@@ -9,6 +9,7 @@ const Body = () => {
   const [listOfResturants, setListOfResturant] = useState([]);
   const [filteredResturant, setFilteredResturant] = useState([]); // Added copy so that in the search it will not effect the original list
   const [searchText, setSearchText] = useState("");
+  const ResWithPromotedCard = cardWithPromoted(ResturantCard);
 
   useEffect(() => {
     //console.log("Hello It Loads immediately after the body componenet loads");
@@ -20,7 +21,7 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9257514&lng=77.6704236&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const response = await resData.json();
-    //console.log("response=", response);
+    console.log("response=", response);
     //optional chaining
     setListOfResturant(
       response?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
@@ -35,7 +36,7 @@ const Body = () => {
   // console.log("Body componenet called First");
 
   const checkOnlineStatus = useCheckOnline();
-  console.log("checkOnlineStatus===", checkOnlineStatus);
+  //console.log("checkOnlineStatus===", checkOnlineStatus);
 
   if (checkOnlineStatus === false)
     return (
@@ -91,7 +92,11 @@ const Body = () => {
           <Link
             key={resturant.info.id}
             to={"/restaurants/" + resturant.info.id}>
-            <ResturantCard resData={resturant} />
+            {resturant.info.avgRating > 4.3 ? (
+              <ResWithPromotedCard resData={resturant} />
+            ) : (
+              <ResturantCard resData={resturant} />
+            )}
           </Link>
         ))}
       </div>
