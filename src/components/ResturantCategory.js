@@ -3,9 +3,9 @@ import ItemList from "./ItemList";
 
 const ResturantCategory = ({ data }) => {
   //console.log("Data==", data);
-  const [showAccordian, setShowAccordian] = useState(false);
+  const [showItem, setShowItem] = useState(false);
   const handleClick = () => {
-    setShowAccordian(!showAccordian);
+    setShowItem(!showItem);
   };
 
   return (
@@ -23,7 +23,7 @@ const ResturantCategory = ({ data }) => {
           />
         </div>
         {/**Accordian*/}
-        {showAccordian && <ItemList items={data.itemCards} />}
+        {showItem && <ItemList items={data.itemCards} />}
       </div>
     </div>
   );
