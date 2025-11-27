@@ -12,6 +12,8 @@ const ResturantMenu = () => {
   /** Here useResturantMenu is a custom hook */
   const resInfo = useResturantMenu(resId);
 
+  const [showIndex, setShowIndex] = useState(0);
+
   if (resInfo === null) return <Shimmer />;
 
   const { name, cuisines, costForTwo } =
@@ -44,10 +46,12 @@ const ResturantMenu = () => {
         {cuisines}-{costForTwo}
       </p>
       {/*Category Map*/}
-      {categories.map((category) => (
+      {categories.map((category, index) => (
         <ResturantCategory
           key={category?.card?.card.categoryId}
           data={category?.card?.card}
+          showItem={index === showIndex ? true : false}
+          setShowIndex={() => setShowIndex(index)}
         />
       ))}
     </div>
