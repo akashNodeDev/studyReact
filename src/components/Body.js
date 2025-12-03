@@ -1,8 +1,9 @@
 import ResturantCard, { cardWithPromoted } from "./ResturantCard";
 import Shimmer from "./Shimmer";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router";
 import useCheckOnline from "../utils/useCheckOnline";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   // Local State Variable
@@ -21,7 +22,7 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9257514&lng=77.6704236&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const response = await resData.json();
-    console.log("response=", response);
+    //console.log("response=", response);
     //optional chaining
     setListOfResturant(
       response?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
@@ -42,6 +43,8 @@ const Body = () => {
     return (
       <h1>Oops:You are offline. Please check your internet connection once!</h1>
     );
+
+  const { setUserName, loggedInUser } = useContext(UserContext);
 
   // Conditional Rendering
 
@@ -85,6 +88,14 @@ const Body = () => {
             }}>
             Top Rated Resturants
           </button>
+        </div>
+        <div className="m-4 p-4 flex items-center ">
+          <label> Username: </label>
+          <input
+            className="border border-black p-2"
+            onChange={(e) => setUserName(e.target.value)}
+            value={loggedInUser}
+          />
         </div>
       </div>
       <div className="flex flex-wrap">
