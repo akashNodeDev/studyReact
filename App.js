@@ -57,13 +57,13 @@ const AppLayout = () => {
     setUserName(data.name);
   }, []);
   return (
-    /*Here we are providing the value of the context to whole application*/
-    <UserContext.Provider value={{ loggedInUser: userName }}>
-      <div className="app">
+    /*Here we are providing the value of the context to Header of the application*/
+    <div className="app">
+      <UserContext.Provider value={{ loggedInUser: userName }}>
         <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+      </UserContext.Provider>
+      <Outlet />
+    </div>
   );
 };
 
