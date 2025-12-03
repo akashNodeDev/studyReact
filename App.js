@@ -58,12 +58,14 @@ const AppLayout = () => {
   }, []);
   return (
     /*Here we are providing the value of the context to Header of the application*/
-    <div className="app">
-      <UserContext.Provider value={{ loggedInUser: userName }}>
-        <Header />
-      </UserContext.Provider>
-      <Outlet />
-    </div>
+    <UserContext.Provider value={{ loggedInUser: userName }}>
+      <div className="app">
+        <UserContext.Provider value={{ loggedInUser: "Elon Musk" }}>
+          <Header />
+        </UserContext.Provider>
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 
