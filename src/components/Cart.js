@@ -3,6 +3,13 @@ import ItemList from "./ItemList";
 import { clearCart } from "../utils/cartSlice";
 
 const Cart = () => {
+  // Subscribe the specific store
+  // instead of writing code like below use the new code
+  // const store = useSelector(store)
+  // const cartItem = store.cart.items
+  // this above method is not efficient way of subscribing the store. Plese do not use this.
+
+  // Use the below one in which you are subscribing to the specific store like store.cart.items
   const cartItems = useSelector((store) => store.cart.items);
   console.log("Added cart items==", cartItems);
 

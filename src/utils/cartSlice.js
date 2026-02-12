@@ -6,6 +6,7 @@ const cartSlice = createSlice({
     items: [],
   },
   reducers: {
+    // Redux toolkit uses IMMER.js behind the scene.
     addItem: (state, action) => {
       // mutating the state here
       state.items.push(action.payload);
