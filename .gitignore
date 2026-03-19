@@ -15,4 +15,5 @@
 - Install Babel Dependencies
 - Configure Babel
 -Configure Parcel Config file to disable babel default transpilation
-
+- Jest - npx jest --init
+- Install jsdom Library
