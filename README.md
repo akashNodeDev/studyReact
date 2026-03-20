@@ -9,6 +9,12 @@
 - dispatch(action)
 - Read the data using Slectors
 
+# Types of testing(devloper)
+
+1. Unit testing -- specific portion of application
+2. Integration testing -- combination of multiple components
+3. End To End Testing (e2e testing) -- Whole application(From landing to login and all the features)
+
 #Setting up testing in our app
 
 - Install React Testing Library
