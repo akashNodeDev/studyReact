@@ -11,7 +11,7 @@ const Cart = () => {
 
   // Use the below one in which you are subscribing to the specific store like store.cart.items
   const cartItems = useSelector((store) => store.cart.items);
-  console.log("Added cart items==", cartItems);
+  //console.log("Added cart items==", cartItems);
 
   const dispatch = useDispatch();
 

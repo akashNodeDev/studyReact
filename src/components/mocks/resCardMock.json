@@ -1,0 +1,76 @@
+{
+  "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+  "info": {
+    "id": "10590",
+    "name": "Pizza Hut",
+    "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2026/2/12/ffc7ef11-0be8-41b9-a843-ef47d17e607d_10590.JPG",
+    "locality": "Bellandur",
+    "areaName": "Bellandur",
+    "costForTwo": "₹300 for two",
+    "cuisines": ["Pizzas"],
+    "avgRating": 4.3,
+    "parentId": "721",
+    "avgRatingString": "4.3",
+    "totalRatingsString": "12K+",
+    "sla": {
+      "deliveryTime": 27,
+      "lastMileTravel": 2.4,
+      "serviceability": "SERVICEABLE",
+      "slaString": "25-30 mins",
+      "lastMileTravelString": "2.4 km",
+      "iconType": "ICON_TYPE_EMPTY"
+    },
+    "availability": {
+      "nextCloseTime": "2026-03-22 05:00:00",
+      "opened": true
+    },
+    "badges": {},
+    "isOpen": true,
+    "type": "F",
+    "badgesV2": {
+      "entityBadges": {
+        "imageBased": {},
+        "textBased": {},
+        "textExtendedBadges": {}
+      }
+    },
+    "aggregatedDiscountInfoV3": {
+      "header": "FREE ITEM"
+    },
+    "orderabilityCommunication": {
+      "title": {},
+      "subTitle": {},
+      "message": {},
+      "customIcon": {}
+    },
+    "differentiatedUi": {
+      "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+      "differentiatedUiMediaDetails": {
+        "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+        "lottie": {},
+        "video": {}
+      }
+    },
+    "reviewsSummary": {},
+    "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+    "restaurantOfferPresentationInfo": {},
+    "externalRatings": {
+      "aggregatedRating": {
+        "rating": "4.1",
+        "ratingCount": "104"
+      },
+      "source": "GOOGLE",
+      "sourceIconImageId": "v1704440323/google_ratings/rating_google_tag"
+    },
+    "ratingsDisplayPreference": "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY"
+  },
+  "analytics": {
+    "context": "seo-data-ff1c0f50-a4c6-4cab-8697-5ec30b188a07"
+  },
+  "cta": {
+    "link": "https://www.swiggy.com/city/bangalore/pizza-hut-bellandur-rest10590",
+    "text": "RESTAURANT_MENU",
+    "type": "WEBLINK"
+  },
+  "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
+}

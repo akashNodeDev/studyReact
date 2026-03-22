@@ -19,18 +19,18 @@ const Body = () => {
 
   const fetchResturantList = async () => {
     const resData = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9257514&lng=77.6704236&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9257514&lng=77.6704236&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
     );
     const response = await resData.json();
     //console.log("response=", response);
     //optional chaining
     setListOfResturant(
       response?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
+        ?.restaurants,
     );
     setFilteredResturant(
       response?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
+        ?.restaurants,
     );
   };
 
@@ -56,6 +56,7 @@ const Body = () => {
         <div className="search m-4 p-4">
           <input
             type="text"
+            data-testid="searchInput"
             className="border border-solid border-black"
             value={searchText}
             onChange={(e) => {
@@ -66,12 +67,13 @@ const Body = () => {
           <button
             className="px-4 py-2 bg-green-100 m-2 rounded-lg"
             onClick={() => {
-              console.log("searchText==", searchText);
+              // console.log("searchText==", searchText);
               const filteredResturant = listOfResturants.filter((res) =>
-                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                res.info.name.toLowerCase().includes(searchText.toLowerCase()),
               );
               setFilteredResturant(filteredResturant);
-            }}>
+            }}
+          >
             Search
           </button>
         </div>
@@ -81,11 +83,12 @@ const Body = () => {
             onClick={() => {
               //console.log("Res List Changed");
               const filteredList = listOfResturants.filter(
-                (res) => res.info.avgRating > 4.2
+                (res) => res.info.avgRating > 4.2,
               );
               setFilteredResturant(filteredList);
-              console.log("Res List filtered", filteredList);
-            }}>
+              // console.log("Res List filtered", filteredList);
+            }}
+          >
             Top Rated Resturants
           </button>
         </div>
@@ -102,7 +105,8 @@ const Body = () => {
         {filteredResturant.map((resturant) => (
           <Link
             key={resturant.info.id}
-            to={"/restaurants/" + resturant.info.id}>
+            to={"/restaurants/" + resturant.info.id}
+          >
             {resturant.info.avgRating > 4.3 ? (
               <ResWithPromotedCard resData={resturant} />
             ) : (

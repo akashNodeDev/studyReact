@@ -10,6 +10,7 @@ const config = {
   transform: {
     "^.+\\.(js|jsx)$": "babel-jest",
   },
+  setupFiles: ["<rootDir>/jest.setup.js"],
 };
 
 module.exports = config;
